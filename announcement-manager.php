@@ -85,9 +85,9 @@ $result_ann = mysqli_query($conn,"SELECT * from announcement ORDER BY date DESC;
        
 	$reset = date_default_timezone_get();
 	date_default_timezone_set('Asia/Kolkata');
-	$curr_date = strtotime($curr_date);
+	$new_date = strtotime($curr_date);
 	date_default_timezone_set($reset);
-	$curr_date = date( "d F, Y, h:i a", $curr_date);
+	$curr_date = date( "d F, Y, h:i a", $new_date);
         ?>
       <p class="pb-3 mb-0 small lh-sm border-bottom" style="padding-left:20px">
         <strong class="d-block text-gray-dark" >Rahul Mishra- Manager<br/><?php echo $curr_date?></strong>
