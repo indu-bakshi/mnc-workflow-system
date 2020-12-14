@@ -74,6 +74,7 @@ $result_ann = mysqli_query($conn,"SELECT * from announcement ORDER BY date DESC;
 	date_default_timezone_set("India/Mumbai");
 	$new_date = new DateTime($new_date, new DateTimeZone($timezone));
         $curr_date = date( "d F, Y, h:i a", $new_date);
+	$curr_date = $curr_date->format('U');
         ?>
       <p class="pb-3 mb-0 small lh-sm border-bottom" style="padding-left:20px">
         <strong class="d-block text-gray-dark" >Rahul Mishra- Manager<br/><?php echo $curr_date?></strong>
