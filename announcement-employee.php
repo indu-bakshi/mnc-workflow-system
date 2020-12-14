@@ -60,22 +60,19 @@ if (isset($_GET['logout'])) {
 <?php endif ?> 
 <?php 
 $result_ann = mysqli_query($conn,"SELECT * from announcement ORDER BY date DESC;");
+$result_ann_new=mysqli_query($conn,"SELECT ann_id, announcement, date,CONVERT_TZ(date, '+00:00', '+05:30') As curr_date from announcement ORDER BY date DESC; ");
 ?>
 
 <main class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0">Recent announcements</h6>
-    <?php while ($row= mysqli_fetch_array($result_ann)){?>
+    <?php while ($row= mysqli_fetch_array($result_ann_new)){?>
     <div class="d-flex text-muted pt-3">
       <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-         <?php $curr_date=$row["date"];
-       
-	$reset = date_default_timezone_get();
-	date_default_timezone_set('Asia/Kolkata');
-	$new_date = strtotime($curr_date);
-	date_default_timezone_set($reset);
-	$curr_date = date( "d F, Y, h:i a", $new_date);
-        ?>
+         <?php 
+		$curr_date=$row["curr_date"];
+	 $curr_date = date( "d F, Y, h:i a", strtotime($curr_date));
+	    ?>
       <p class="pb-3 mb-0 small lh-sm border-bottom" style="padding-left:20px">
         <strong class="d-block text-gray-dark" >Rahul Mishra- Manager<br/><?php echo $curr_date?></strong>
        <?php echo $row['announcement'];?>
