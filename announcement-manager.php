@@ -84,7 +84,7 @@ $result_ann = mysqli_query($conn,"SELECT * from announcement ORDER BY date DESC;
         <?php $curr_date=$row["date"];
        
 	$reset = date_default_timezone_get();
-	date_default_timezone_set('India/Mumbai');
+	date_default_timezone_set('Asia/Calcutta');
 	$curr_date = strtotime($curr_date);
 	date_default_timezone_set($reset);
 	$curr_date = date( "d F, Y, h:i a", $curr_date);
