@@ -44,7 +44,10 @@ if (isset($_GET['logout'])) {
 <div class="jumbotron">
     <div class="display-4">  
     Announcements
-    
+    <?php
+date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+echo date('d-m-Y H:i:s');
+?>
     </div>
 </div>
 <a class="btn btn-danger" href="employee.php?logout='1'" role="button" style="float:right; margin-right:30px">Log Out!</a>
